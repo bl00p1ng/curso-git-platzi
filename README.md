@@ -1,2 +1,3 @@
 # curso-git-platzi
-Repositorio de prueba del curso profesional de Git y Git Hub de Platzi
+Repositorio de prueba del curso profesional de Git y Git Hub de Platzi.
+Proyecto guitarras Invie-sibles
