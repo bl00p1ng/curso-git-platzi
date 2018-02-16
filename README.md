@@ -1,3 +1,4 @@
-# curso-git-platzi
-Repositorio de prueba del curso profesional de Git y Git Hub de Platzi.
-Proyecto guitarras Invie-sibles
+# invie
+Las guitarras más locas
+
+http://leonidasesteban.github.io/invie-responsive/
