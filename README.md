@@ -109,3 +109,29 @@ git checkout
     ```
 
     De lo contrario se puede perder el tracking y generar conflictos.
+
+- ## git reset vs git rm
+
+  - ### git rm
+
+    Permite eliminar archivos de git sin eliminar su historial en el sistema de versiones. Por lo que para recuperar el archivo solo hay que *"viajar en el tiempo"*  y recuperar el archivo del último commit antes de borrarlo.
+
+    ```bash
+    git rm --cached # Elimina los archivos del área de Staging y del próximo commit pero los mantiene en el disco duro.
+    
+    git rm --force # Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que se acceder al registro de la existencia de los archivos, asi que se puede recuperar si es necesario (pero se deben usar comandos más avanzados).
+    ```
+
+  - **git reset**
+
+    Permite *"volver en el tiempo"* pero de una forma diferente a git checkout que permite regresar, mirar, pasear y volver. **Git reset** se regresa al pasado sin la posibilidad de volver. Se borra y sobrescribe la historia. Por lo tanto es un comando muy peligroso que no se puede usar a la ligera.
+
+    ```bash
+    git reset --hard # Regresa y borra lo que este el el staging area
+    
+    git reset --soft # Mantiene los cambios que esten en ele staging area para que se pueda aplicar dichos cambios en un commit anterior
+    
+    git reset HEAD # Sirve para sacar archivos del staging area para que esos cambios no se envíen al último commit. Se puede deshacer agregando de nuevo los archivos con git add
+    ```
+
+    
