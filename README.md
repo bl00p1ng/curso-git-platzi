@@ -112,6 +112,8 @@ git checkout
 
 - ## git reset vs git rm
 
+- ## Introducción a las ramas o branches de Git
+
   - ### git rm
 
     Permite eliminar archivos de git sin eliminar su historial en el sistema de versiones. Por lo que para recuperar el archivo solo hay que *"viajar en el tiempo"*  y recuperar el archivo del último commit antes de borrarlo.
@@ -134,4 +136,58 @@ git checkout
     git reset HEAD # Sirve para sacar archivos del staging area para que esos cambios no se envíen al último commit. Se puede deshacer agregando de nuevo los archivos con git add
     ```
 
-    
+-  ## Introducción a las ramas o branches de Git
+
+  ```bash
+  git commit -am "msj commit" # Perimite hacer el add y el commit en un sólo comando. Sólo funciona al modificar archivos que estaban en el staging area.
+  ```
+
+  - **Crear rama:** la nueva rama se crea a partir del HEAD de la rama actual. Con **git show** se ´puede ver hacia que rama esta apuntando el HEAD.
+
+    ```bash
+    git branch nombreRama # Crea una rama.
+    git checkout nombreRama # Moverse a una rama
+    ```
+
+    Es importante que antes de pasar de una rama a otra se haga un commit para **evitar perder los cambios** que se hayan hecho.
+
+- ## Fusión de ramas con Git merge
+
+  Para hacer un merge primero hay que hacer un checkout a la rama que va a recibir los cambios, por ejemplo *master*. 
+
+  Los **conflictos** ocurren cuando dos o más personas hacen cambios sobre la(s) misma(s) línea(s) de código.
+
+  ```bash
+  git checkout master # Moverse a la rama que va arecibir los cambios
+  
+  git merge nombreRama # Mezclar esa rama con la rama en la que estoy ahora. Esto crea con commit con el merge que se hizo
+  
+  git branch # Lista las ramas disponibles  y muestra en la rama en la que estoy posicionado
+  
+  ```
+
+  **Merge** funciona en ambas direcciones. tanto para fusionar una rama con master como para fusionar a master con una rama diferente.
+
+- ## Resolución de conflictos al hacer un merge
+
+  Cuando hay un conflicto no se crea el commit del merge y por lo tanto la fusión no se completa. Git resalta con una sintaxis especial los conflictos.
+
+  ```bash
+  <<<<<<< HEAD
+  	# Cambios actuales
+  =======
+  	# Cambios que vienen de la otra rama
+  >>>>>>> otraRama
+  ```
+
+  
+
+  Hay que solucionar esos conflictos y luego hacer un commit
+
+  ## 
+
+
+  
+
+  
+
