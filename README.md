@@ -247,6 +247,32 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
     ssh-add rutaLlaveSSH # Anadir la llave al sistema. No añadir a que tiene la extención .pub, esa es la pública
     ```
 
+- ## Conexión a GitHub con SSH
+
+  - Ir GitHub
+
+  - Click en settings > SSH and GPG Keys > New SSH key
+
+  - Darle un nombre a la llave
+
+  - Pegar el contenido de la llave pública
+
+  - Confirmar el proceso poniendo la contraseña de GitHub
+
     
 
+  Para conectarse al repositorio de GitHub usando SSH:
 
+  - Ir al repositorio deseado.
+
+  - Click en Clone or download > Use SSH
+
+  - Copiar la URL
+
+    - Agregar o reemplazar, según sea el caso, esa URL con **git remote**. Si se quiere reemplazar la URL  se usa el comando:
+
+      ```bash
+      git remote set-url origin git@github.com:Usuraio/Repositorio.git # origin → el nombre del repositorio remoto. Origin es un estándar en la industria
+      ```
+
+      Es una **buena práctica** hacer  un pull al repositorio remoto antes de hacer cambios en el repositorio local y antes de mandar cambios nuevos en un push.
