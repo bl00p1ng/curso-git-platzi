@@ -209,6 +209,51 @@ git checkout
 
     
 
+- ## 
+
+- ## Uso de GitHub
+
+  - **Proyectos:** son una especie de grupo de repositorios que se pueden tener dentro de una empresa/organización.
+
+  - **Blame:** ver quén creo/modifico un archivo
+
+  - **History:** es el equivalente al *git log*. Muestra el historial de un archivo
+
+  - **Deltas:** son los cambios que se hacen a un archivo y se mandan al servidor. Al servidor no se le manda todo el archivo como tal si no los cambios que se hicieron sobre dicho archivo.
+
+  - **Objects:** el repositorio comprimid para ser enviado a internet.
+
+  - **origin/master:** el master del repositorio en GitHub
+
+  - ### Añadir repositorio remoto:
+
+    ```bash
+    git remote add urlRespositorio
+    git remote origin -v # Mostar los origins. Los repositorios remotos a los que se puede hacer fetch o push
+    
+    git pull origin master # Traer los cambios del repositorio remoto
+    
+    git pull origin master --allow-unrelated-histories # Permite fusionar historias de commits que no tienen ninguna relación entre si
+    
+    git push origin master # Mandar los cambios del repositorio local al remoto
+    ```
+
+    
+
+- ## Cómo funcionan las llaves públicas y privadas
+
+  ![llaves_publica_privada](llaves_publica_privada.jpg)
+
+Se quiere transmitir un mensaje secreto a través de internet sin que se su contenido se vea comprometido. Para ello hay que:
+
+-  Crear una llave pública y una privada. Estas llaves están vinculadas matemáticamente.
+- Le mando una copia de la llave pública a la persona que me quiere mandar el mensaje.
+- Usa persona usa la llave pública para encriptar el mensaje que me quiere mandar.
+- La persona manda ese mensaje.
+- Recibo el mensaje y uso mi llave privada para desencriptar el mensaje.
+
+Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuerte que tomaría muchísimos años (muchos más de lo que dura la vida humana) descifrar el mensaje si no se tiene la llave privada.
+
 
 
 
