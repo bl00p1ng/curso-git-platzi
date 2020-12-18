@@ -207,39 +207,6 @@ git checkout
     git push origin master # Mandar los cambios del repositorio local al remoto
     ```
 
-    
-
-- ## 
-
-- ## Uso de GitHub
-
-  - **Proyectos:** son una especie de grupo de repositorios que se pueden tener dentro de una empresa/organización.
-
-  - **Blame:** ver quén creo/modifico un archivo
-
-  - **History:** es el equivalente al *git log*. Muestra el historial de un archivo
-
-  - **Deltas:** son los cambios que se hacen a un archivo y se mandan al servidor. Al servidor no se le manda todo el archivo como tal si no los cambios que se hicieron sobre dicho archivo.
-
-  - **Objects:** el repositorio comprimid para ser enviado a internet.
-
-  - **origin/master:** el master del repositorio en GitHub
-
-  - ### Añadir repositorio remoto:
-
-    ```bash
-    git remote add urlRespositorio
-    git remote origin -v # Mostar los origins. Los repositorios remotos a los que se puede hacer fetch o push
-    
-    git pull origin master # Traer los cambios del repositorio remoto
-    
-    git pull origin master --allow-unrelated-histories # Permite fusionar historias de commits que no tienen ninguna relación entre si
-    
-    git push origin master # Mandar los cambios del repositorio local al remoto
-    ```
-
-    
-
 - ## Cómo funcionan las llaves públicas y privadas
 
   ![llaves_publica_privada](llaves_publica_privada.jpg)
@@ -254,8 +221,32 @@ Se quiere transmitir un mensaje secreto a través de internet sin que se su cont
 
 Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuerte que tomaría muchísimos años (muchos más de lo que dura la vida humana) descifrar el mensaje si no se tiene la llave privada.
 
+- ## Configurar llaves SSH en local
 
+  Las llaves SSH no se crean por repositorio o proyecto. Se crean por persona o computador.
 
+  - Se crea en el entorno local una llave pública y una privada.
 
+  - Se manda la llave pública a GitHub.
+
+  - Esto permite establecer una conexión **ssh** con GitHub.
+
+  - En la primera conexión GitHub sabe que se mandas una llave pública creada en local y manda cifrada con la propia llave pública creada en local una llave pública.
+
+  - A partir de ahora hay una conexión de SSH 100% cifrada.
+
+    A la llave privada creada en local se le puede añadir una contraseña para hacerla aún más segura. También es recomendable cifrar  el disco duro, en el caso de Windows eso se hace con BitLocker(sólo para Windows Professional).
+
+    Para **generar la llave SSH** se usan los siguientes comandos:
+
+    ```bash
+    ssh-keygen -t rsa -b 4096 -C "user@email.com" # ssh-keygen → genera la llave SSH. -t rsa → Especifica el algortitmo para crear las llaves SSH. -b 4096 → Especifica la complejidad de la llave -C email al que se va a asociar la llave
+    
+    eval $(ssh-agent -s) # Evaluar que SSH este corriendo
+    
+    ssh-add rutaLlaveSSH # Anadir la llave al sistema. No añadir a que tiene la extención .pub, esa es la pública
+    ```
+
+    
 
 
