@@ -112,8 +112,6 @@ git checkout
 
 - ## git reset vs git rm
 
-- ## Introducción a las ramas o branches de Git
-
   - ### git rm
 
     Permite eliminar archivos de git sin eliminar su historial en el sistema de versiones. Por lo que para recuperar el archivo solo hay que *"viajar en el tiempo"*  y recuperar el archivo del último commit antes de borrarlo.
@@ -180,14 +178,39 @@ git checkout
   >>>>>>> otraRama
   ```
 
-  
-
   Hay que solucionar esos conflictos y luego hacer un commit
 
-  ## 
+- ## Uso de GitHub
+
+  - **Proyectos:** son una especie de grupo de repositorios que se pueden tener dentro de una empresa/organización.
+
+  - **Blame:** ver quén creo/modifico un archivo
+
+  - **History:** es el equivalente al *git log*. Muestra el historial de un archivo
+
+  - **Deltas:** son los cambios que se hacen a un archivo y se mandan al servidor. Al servidor no se le manda todo el archivo como tal si no los cambios que se hicieron sobre dicho archivo.
+
+  - **Objects:** el repositorio comprimid para ser enviado a internet.
+
+  - **origin/master:** el master del repositorio en GitHub
+
+  - ### Añadir repositorio remoto:
+
+    ```bash
+    git remote add urlRespositorio
+    git remote origin -v # Mostar los origins. Los repositorios remotos a los que se puede hacer fetch o push
+    
+    git pull origin master # Traer los cambios del repositorio remoto
+    
+    git pull origin master --allow-unrelated-histories # Permite fusionar historias de commits que no tienen ninguna relación entre si
+    
+    git push origin master # Mandar los cambios del repositorio local al remoto
+    ```
+
+    
 
 
-  
 
-  
+
+
 
