@@ -276,3 +276,101 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
       ```
 
       Es una **buena práctica** hacer  un pull al repositorio remoto antes de hacer cambios en el repositorio local y antes de mandar cambios nuevos en un push.
+
+- ## Tags y versiones en GitHub
+
+  ```bash
+  git log --all # Mostra TODOS los commits hechos en el proyecto
+  git log --all --graph # Mostar con gráfico con el historial y comportamiento de las ramas creadas en el proyecto.
+  git log --all --graph --decorate --oneline # Muestra el gráfico de una maenera más corta y concisa.
+  
+  # Este log se muestra en orden cronologico ascendente (se lee de abajo hacia arriba)
+  ```
+
+  Crear un alias de un comando
+
+  ```bash
+  alias nombrelias="comando"
+  ```
+
+  Crear un **tag**
+
+  - usar *git log* con algunos de los parámetros del punto anterior para obtener el hash del commit al que se le va a agregar un tag.
+
+  - Añadir el tag al commit con ese hash:
+
+    ```bash
+    git tag -a v0.1 -m "mensaje, como si fuera un commit" hashCommit # -a → Indica que se quiere añadir un tag
+    
+    git tag # Lista todos los tags creados
+    
+    git show-ref --tags # Mostar a que commit esta asociado cada tag
+    ```
+
+  - Mandar tags a GitHub:
+
+    ```bash
+    git push origin --tags
+    ```
+
+  Borrar un tag:
+
+  ```bash
+  git tag -d nombreTag # -d → Indica que se quiere borrar ese tag
+  ```
+
+  Luego de borrar un tag hay que volver a hacer un push con los tags al repositorio remoto para que se vean los cambios en GitHub. No obstante hay que hacerlo de una forma especial para que GitHub no siga tomado ese tag como un release.
+
+  ````bash
+  git push origin :refs/tags/nombreTag
+  ````
+
+- ## Manejo de ramas en GitHub
+
+  Algunos comandos útiles al trabajar con ramas:
+
+  ````bash
+  git show-branch # Muestra cuáles son las ramas que exiten y cuál ha sido su historia.
+  
+  git show-brach --all # Muestra lo mismo que el comando anterior pero con un poco más de datos
+  
+  gitk # Muestra la historia del proyecto de en una interfaz gráfica
+  ````
+
+  Mandar una rama del repositorio local al repositorio remoto en GitHub:
+
+  - Hacer un pull al repositorio remoto *(Buena práctica)*
+
+  - Moverse con *git checkout* a la rama deseada
+
+  - Hacer push de esa rama
+
+    ````bash
+    git push origin nombreRama
+    ````
+
+- ## Configurar múltiples colaboradores en un repositorio de GitHub
+
+  Los repositorios **públicos** se pueden clonar sin ningún proble y sin autenticarse en git.
+
+  Añadir a un usuario como contribuidor de un repositorio:
+
+  - Ir a los settings del **repositorio**
+  - Click en *Collaborators*
+  - Escribir el nombre de usuario de la persona que se quiere añadir como contribuidor.
+
+- ## Flujo de trabajo profesional: Haciendo merge de ramas de desarrollo a master
+
+  Las **buenas prácticas** dicen que no se deberían agregar archivos binarios al repositorio, estos deberían estar aparte y ser ignorados. Esto se debe a que los archivos binarios al no ser código se van a mandar completos cada vez  que  se hagan cambios y mientras más binarios tenga el repositorio más pesado va a  ser.
+
+- ## Flujo de trabajo profesional con Pull request
+
+  En entornos de trabajo profesional es poco común que se pueda hacer merge directamente a master. Lo normal es que la rama master este bloqueada  y se tenga que hacer un pull request para hacer un merge con master. Esto se debe a que master es la rama que se manda a producción.
+
+  Algo que también es común en entornos profesionales es tener un entorno de pruebas que sea lo más similar posible al entorno de producción. Por ejemplo si se tiene un website llamado *hyperblog.com* lo normal es que ese entorno de desarrollo se encuentre en un subdominio como *test.hyperblog.com*. A ese enrorno se le conoce como **develop server** o **staging server**.
+
+  Staging/develop seria una rama de desarrollo conectada al servidor de Staging. Dicha rama siempre deber estar actualizada con master. Cada desarrollador trabaja en su entorno local y manda sus cambios a la rama de desarrollo pero no hace merge directamente con esa rama sino que hace un **pull request** que es un estado intermedio antes de hacer el merge en el que otro miembro del equipo revisa los cambios hechos y si toda esta bien permite el merge con la rama de desarrollo. Una vez se prueban los cambios en el servidor de staging se hace otro pull request para agregar esos cambios a master.
+
+  Los **pull request** no son una característica de Git, son una característica de GitHub.
+
+  ![Flujo de tarbajo con pull request](flujo_de_trabajo_branches.png)
