@@ -380,3 +380,47 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
   **Milestones:** cuando se asigna un pull request a un milestone, significa que se logró un objetivo que se tenia y que dicho Pull request  lo representa.
 
   **Projects:** son formas de agrupar repositorios dentro de GitHub.
+
+- ## Creando un Fork, contribuyendo a un repositorio
+
+  Un **fork** es una copia del estado actual de un repositorio. Dicha copia se almacena en la cuenta de GitHub de la persona que hizo el fork. Esta es una característica de GitHub no de Git.
+
+  Cómo contribuir en un proyecto Open Source:
+
+  - Hacer un **fork** al proyecto en cuestión.
+
+  - Clonar el repositorio en el PC.
+
+  - Hacer los cambios en local con los que se quiere contribuir al proyecto.
+
+  - Hacer un commit y un push al fork del repositorio.
+
+  - En GitHub abrir un Pull Request en el fork del repositorio. GitHub abre una interfaz en la que se pueden comparar las diferentes ramas entre los dos repositorios, revisar los cambios que se hicieron, etc.
+
+  - Se crea un pull request en el que detalla con una descripción cuáles son los cambios que se hicieron.
+
+    GitHub avisa cuando un repositorio se adelanta al fork, y permite comparar las diferencias y hacer un pull request para traer los cambios. Otra opción es traerse los cambios desde la terminal, creando una rama que traiga los cambios del repositorio original.
+
+    ````bash
+    git remote upstream urlRepositorioOriginal # upstream → es el nombre que se va a dar al repositorio remoto, dicho nombre es una convención
+    
+    git pull upstream master # Trae los cambios de upstream a la rama master. Luego se hace un commit con dichos cambios
+    
+    git push origin master # Manda los cambios al fork en GitHub
+    ````
+
+- ## Ignorar archivos en el repositorio con .gitignore
+
+  - Crear un archivo llamado **.gitignore** es la raíz del proyecto
+
+  - Dentro de .gitignore se ponen los nombres de archivo o directorios que no se deben agregar a git
+
+    ````bash
+    *.jpg # Igonorar todos los archivos con extención .jpg
+    
+    /content/themes # Ignorar la carpeta themes que esta dentro de content
+    
+    /content/themes/casper #  No ignorar la carpeta casper dentro de content/themes
+    ````
+
+    
