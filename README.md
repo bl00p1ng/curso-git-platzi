@@ -374,3 +374,9 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
   Los **pull request** no son una característica de Git, son una característica de GitHub.
 
   ![Flujo de tarbajo con pull request](flujo_de_trabajo_branches.png)
+
+- ## Utilizando Pull Request en GitHub
+
+  **Milestones:** cuando se asigna un pull request a un milestone, significa que se logró un objetivo que se tenia y que dicho Pull request  lo representa.
+
+  **Projects:** son formas de agrupar repositorios dentro de GitHub.
