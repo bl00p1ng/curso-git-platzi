@@ -423,4 +423,16 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
     /content/themes/casper #  No ignorar la carpeta casper dentro de content/themes
     ````
 
+- ## README.md es una buena práctica
+
+  El **readme** es un archivo hecho hecho en *markdown* que es un lenguaje de marcado que esta en un punto intermedio entre HTML y un texto plano. Permite dar formato de forma sencilla a un texto. Además también admite fragmentos de HTML en su interior (ver el readme de VueJs)
+
+- ## Publicar un website con GitHub pages
+
+  - Crear un repositorio público con el siguiente nombre: *tunombredeusuario.github.io*
+
+  - Agregarle a ese repositorio un index.html
+
+  - Configurar en GitHub que rama se va a usar para hacer deploy del sitio Web
+
     
