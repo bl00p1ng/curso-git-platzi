@@ -517,3 +517,21 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
   ````
 
   Git clean borra los archivos **nuevos**, no tiene que ser necesariamente un archivo duplicado, además ignora los archivos que se editaron o modificaron.
+
+- ## Git cherry-pick: traer commits viejos al head de un branch
+
+  Permite traer avances especificos de una rama que aún no esta terminada a master. **Es una mala práctica** se esta reconstruyendo la historia del proyecto, usar con sabiduría y no usar si no se sabe lo que se esta haciendo.
+
+  ### Cómo usar cherry-pick
+
+  - En la rama que aún no esta terminada, buscar con *git log --oneline* el haash del commit que se quiere llevar a master
+
+  - Ir a master
+
+  - Usar cherry-pick para traer el commit deseado
+
+    ````bash
+    git cherry-pick hashCommit
+    ````
+
+    Si luego cuando se termine la rama de donde se trajo ese commit, se hace un merge, se generará un conflicto pues en ambas ramas se habrán hecho los mismos cambios. 
