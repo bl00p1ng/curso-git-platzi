@@ -435,4 +435,71 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
   - Configurar en GitHub que rama se va a usar para hacer deploy del sitio Web
 
-    
+- ## Git rebase: reorganizando el trabajo realizado
+
+  Consiste en toma runa rama completa y pegarla de regreso en la rama master. Es una **muy mala práctica** hacer esto enviarlo al repositorio remoto, si esto se hace debe ser sólo en local. Usa git rebase con precaución y procurando preguntar antes a los compañeros de equipo.
+
+  ### Cómo hacer un rebase
+
+  - Posicionarse en la rama que se quiere pegar a master.
+
+  - Ejecutar:
+
+    ````bash
+    git rebase master # Pega los cambios de la rama actual a master
+    ````
+
+  - Regresar a la rama master
+
+  - Hacer un rebase desde master a la rama que se quiere pegar
+
+    ````bash
+    git rebase experimento
+    ````
+
+- ## Git Stash: guardar cambios en memoria y recuperarlos después
+
+  **Git Stash** permite guardar cambios en lugar temporal en caso de que dichos cambios aún no estén listos para ser agregados en un commit
+
+  ````bash
+  git stash # Mandar cambios al stash
+  git stash list # Listar los stash guardados. WIP → Signifca Work In Progress
+  
+  git stash pop # Traer de regreso los cambios guardados en el stash. Trae el último estado del stashed y lo inserta en el staging area
+  git stash drop # Eliminar el último stash
+  git stash drop stash@{<stash_id>} # Borrar un stash especifico
+  git stash clear # Borrar todos los stash
+  
+  git stash branch nombreRama # Manda los cambios del stash a una rama
+  git stash branch nombreRama stash@{<stash_id>} # Crear una rama y aplicarle los cambios de un stash especifico
+  ````
+
+  Git stash es útil no sólo para guardar cambios que aún no están listos sino también para hacer pequeños experimentos que no ameritan una rama o un commit y después volver rápidamente al estado anterior
+
+  También se puede poner un mensaje para identificar un stash al listarlos
+
+  ````bash
+  git stash save "Mensaje"
+  ````
+
+  Git stash es agnóstico de la rama en la que se encuentra, git stash recupera los cambios que se hicieron en el lugar en que se invoca.
+
+  ### Otros comandos útiles de Git stash:
+
+  - Aplicar los cambios de un stash específico y eliminar ese stash
+
+    ````bash
+    git stash pop stash@{<stash_id>} # <stash_id> → Se obtine con git stash list
+    ````
+
+  - Recuperar los cambios de un stash especifico:
+
+    ````bash
+    git stash apply stash@{<stash_id}
+    ````
+
+    ### Consideraciones:
+
+    - El cambio más reciente (al crear un stash) **SIEMPRE** recibe el valor 0 y los que estaban antes aumentan su valor.
+    - Al crear un stash tomará los archivos que han sido modificados y   eliminados. Para que tome un archivo creado es necesario agregarlo al   Staging Area con git add [nombre_archivo] con la intención de que git   tenga un seguimiento de ese archivo, o también utilizando el comando git stash -u (que guardará en el stash los archivos que no estén en el  staging).
+    - Al aplicar un stash este no se elimina, es buena práctica eliminarlo.
