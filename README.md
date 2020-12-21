@@ -593,3 +593,81 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
   ````bash
   git log -S "Palabra a buscar"
   ````
+
+- ## Comandos y recursos colaborativos en Git y GitHub
+
+  No solo pueden crearse alias globales sino también alias dentro de Git. Los siguientes son comandos creados para estadísticas de trabajo colaborativo.
+
+  ````bash
+  git shortlog # Ver que commits ha hecho cada miembro del equipo
+  git shortlog -sn # Ver cuantos commits ha hecho cada miembro del equipo
+  git shortlog -sn --all # Lo mismo que el comando anterior, sólo que incluye también los commits borrados
+  git shortlog -sn --all --no-merge # Lo mismo que el anterior, pero excluye los merges
+  ````
+
+  ### Crear un alias interno de git
+
+  ````bash
+  git config --global alias.stats "shortlog -sn --all --no-merges" # stats → El alias del comando. "..." → Definen el comando para el que se va a crear un alias
+  ````
+
+  ### git blame
+
+  También conocido como *"el comando de la culpa"* permite saber quien modifico que en determinado archivo
+
+  ````bash
+  git blame backend.py
+  git blame -c backend.py # Indenta un poco mejor la salida del comando
+  
+  git blame --help # Abre en el navegador la documentación del comando. --help sirve para cualquier comando
+  
+  git blame js/main.js -L35,53 # -L35,53 → Muestra quién modifico que entre las líneas 35 y 53
+  ````
+
+  ### Ver ramas remotas del proyecto
+
+  ```bash
+  git branch -r
+  
+  git branch -a # Ver todas las ramas, en blanco las locales y en rojo las remotas 
+  ```
+
+  ### Ver estadísticas útiles del proyecto en GitHub
+
+  En el Proyecto en GitHub > Insights > Pulse se pueden ver:
+
+  - La cantidad de pull request a los que se ha hecho merge
+  - La cantidad de pull request hechos
+  - La cantidad de pull request cerrados
+  - Los contribuidores del proyecto
+  - La cantidad de releases hechos
+  - ETC
+
+  Se puede configurar el periodo que evalua el pulso.
+
+  
+
+  En el Proyecto en GitHub > Insights > Contribuitors se pueden ver estadisticas de los contribuidores del proyecto
+
+  En el Proyecto en GitHub > Insights > Community muestra que nuevas prácticas de lineamientos para la comunidad están pendientes y cuales se han hecho
+
+  En el Proyecto en GitHub > Insights > Traffic se muestra el tráfico del proyecto
+
+  En el Proyecto en GitHub > Insights > Commits se muestran estadisticas de los commits.
+
+  En el Proyecto en GitHub > Insights > Code frequency se muestra la relación entre cuánto código nuevo se ha añadido y cuánto se ha quitado
+
+  En el Proyecto en GitHub > Insights > Dependency Graph se muestran las dependencias del proyecto
+
+  En el Proyecto en GitHub > Insights > Alerts se muestran alertas de GitHub con respecto al Proyecto
+
+  En el Proyecto en GitHub > Insights > Network se muestra la historia de quién ha manipulado el proyecto a lo largo del tiempo y las  respectivas ramas. Es como un Gitk pero online.
+
+  En el Proyecto en GitHub > Insights > Forks se muestra que personas le han hecho fork al proyecto.
+
+  
+
+
+
+
+
