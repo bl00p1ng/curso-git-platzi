@@ -503,3 +503,17 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
     - El cambio más reciente (al crear un stash) **SIEMPRE** recibe el valor 0 y los que estaban antes aumentan su valor.
     - Al crear un stash tomará los archivos que han sido modificados y   eliminados. Para que tome un archivo creado es necesario agregarlo al   Staging Area con git add [nombre_archivo] con la intención de que git   tenga un seguimiento de ese archivo, o también utilizando el comando git stash -u (que guardará en el stash los archivos que no estén en el  staging).
     - Al aplicar un stash este no se elimina, es buena práctica eliminarlo.
+
+- ## Git clean: limpiar el proyecto de archivos no deseados
+
+  Permite borrar archivos innecesarios que no esten agregados a un commit, como por ejemplo archivos duplicados.
+
+  ````bash
+  git clean --dry-run # "Correr en seco" Simula la ejecución del comando para ver que archivos va a borrar
+  
+  git clean -f # Borra los archivos listados en el comando anterior
+  
+  git clean -df # Pemite borrar también carpetas duplicadas
+  ````
+
+  Git clean borra los archivos **nuevos**, no tiene que ser necesariamente un archivo duplicado, además ignora los archivos que se editaron o modificaron.
