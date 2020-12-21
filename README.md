@@ -535,3 +535,41 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
     ````
 
     Si luego cuando se termine la rama de donde se trajo ese commit, se hace un merge, se generará un conflicto pues en ambas ramas se habrán hecho los mismos cambios. 
+
+- ## Reconstruir commits en Git con amend
+
+  Amend permite reconstruir commits cuando por ejemplo se hizo un commit pero falto anexarle cambios.
+
+  ### Cómo usar amend
+
+  - Agregar los cambios adicionales con *git add*
+
+  - Usar **amend** para agregar esos nuevos cambios al último commit
+
+    ````bash
+    git commit --amend # Abre un editor que se puede usar para renombrar el commit de ser necesario
+    ````
+
+- ## Git Reset y Reflog: úsese en caso de emergencia
+
+  Sin importar  que la hayas cagado de formas inconmensurables, hay un comando que recuerda todo, **git reflog**. Este comando permite localizar ramas aunque estas se hayan borrado, commits, etc.
+
+  ````bash
+  git reflog
+  ````
+
+  Con este comando se busca el último HEAD donde todo estaba bien y se copia el identificador de dicho HEAD (ejemplo: *HEAD@{4}*).
+
+  A continuación se hace un *git reset* para deshacer los errores. 
+
+  Hay dos tipos de *git reset*:
+
+  - **git reset --HARD**: resetea todo sin conservar nada del staging area. Por lo general es el que más se usa en casos de emergencia.
+  - **git reset --SOFT**: conserva los archivos que esten en el staging area
+
+  ````bash
+  git reset --HARD HEAD@{4} # Retorna el estado del proyecto al HEAD especificado
+  git reset --HARD hash # También puede recibir un hash por parámetro
+  ````
+
+  Hacer esto se considera como **una mala práctica** por lo que sólo debe usarse n casos de emergencia. Git reset no borra el registro que queda en git reflog
