@@ -573,3 +573,23 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
   ````
 
   Hacer esto se considera como **una mala práctica** por lo que sólo debe usarse n casos de emergencia. Git reset no borra el registro que queda en git reflog
+
+- ## Buscar en archivos y commits de Git con Grep y log
+
+  **Git grep** permite saber en que lugares/archivos se emplea determinada keyword o statement.
+
+  ````bash
+  git grep color # Retorna en que archivos se encuentra la palabra color
+  
+  git grep -n color # Retorna lo mismo que el comando anterior y además muestra en que línea se encuentra dicha palabra
+  
+  git grep -c color # Retorna la cantidad de veces que aparece la palabra buscada en los archivos del proyecto
+  
+  git grep "<p>" # "" → Permiten agrupar y/o escapar caracteres
+  ````
+
+  ### Buscar en los commits
+
+  ````bash
+  git log -S "Palabra a buscar"
+  ````
