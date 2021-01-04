@@ -7,7 +7,7 @@ Apuntes y repositorio de prueba del [Curso Profesional de Git y GitHub de Platzi
 ## - Comandos útiles
 
 ```bash
-git show # Muestra todos los cambios histoicos hechos. Incluye información útil como que cambios se hicieron, cuando se hicieron y quien los hizo.
+git show # Muestra todos los cambios historicos hechos. Incluye información útil como que cambios se hicieron, cuando se hicieron y quien los hizo.
 
 git log file.txt # Ver el historial de un archivo
 ```
@@ -16,7 +16,7 @@ git log file.txt # Ver el historial de un archivo
 
 Al ejecutar *git init* se crea un área en la memoria RAM  llamada **staging** donde se almacenarán los cambios al principio, es una especie de *estado temporal*. 
 
-En estado temporal se pueden hacer todos los cambios que se necesiten, de cierta forma esta es un área de preparación, en la que git estará al tanto de que archivos estamos modificando. Una vez se hace un commit se crea un hash (identificador) a las modificaciones para que cada uno de los miembros del proyecto pueda saber que se cambio.
+En ese estado temporal se pueden hacer todos los cambios que se necesiten, de cierta forma esta es un área de preparación, en la que git estará al tanto de que archivos estamos modificando. Una vez se hace un commit se crea un hash (identificador) a las modificaciones para que cada uno de los miembros del proyecto pueda saber que se cambio.
 
 Para mandar archivos al staging area se usa el comando:
 
@@ -31,7 +31,7 @@ git commit # Manda los archivos del staging area al repositorio.
 
 Cuando los archivos aún no se han agregado al staging area con *git add*, son lo que se conoce como **untracked files**.
 
-En ocasiones al trabajar en equipos puede ser necesario traer  un cambio que esta en el repositorio pero no esta en el sistema de archivo local en el que se esta trabajando. Para traer esos cambios se usa el comando:
+En ocasiones al trabajar en equipos puede ser necesario traer  un cambio que esta en el repositorio pero no esta en el sistema de archivos local en el que se esta trabajando. Para traer esos cambios se usa el comando:
 
 ```bash
 git checkout
@@ -41,7 +41,7 @@ git checkout
 
   Son una especie de líneas de tiempo en las que se puede dividir un proyecto para por ejemplo trabajar en funciones experimentales, características nuevas, o trabajar en paralelo.
 
-  El crear una rama se crea una copia de determinada versión de la rama master para trabajar sobre ella. Una vez se termina de trabajar con esa rama nueva se hace un **merge ** para fusionar los cambios hechos en la rama nueva con la rama principal. Las ramas típicas en un proyecto de software son:
+  El crear una rama se crea una copia de determinada versión de la rama master para trabajar sobre ella. Una vez se termina de trabajar con esa rama nueva se hace un **merge** para fusionar los cambios hechos en la rama nueva con la rama principal. Las ramas típicas en un proyecto de software son:
 
   - **master** (main en GitHub)
   - **development**
@@ -100,9 +100,9 @@ git checkout
     git checkout master file.js  # Regresa al archivo original de master
     ```
 
-    Para mantener los cambios y conservar el,archivo viejo sólo hay que hacer un commit
+    Para mantener los cambios y conservar el archivo viejo sólo hay que hacer un commit.
 
-    Si se van a renombrar archivos o a cambiarlos de ubicación en el repositorio lo recomendable es esar:
+    Si se van a renombrar archivos o a cambiarlos de ubicación en el repositorio lo recomendable es usar:
 
     ```bash
     git mv
@@ -129,24 +129,25 @@ git checkout
     ```bash
     git reset --hard # Regresa y borra lo que este el el staging area
     
-    git reset --soft # Mantiene los cambios que esten en ele staging area para que se pueda aplicar dichos cambios en un commit anterior
+    git reset --soft # Mantiene los cambios que esten en el staging area para que se puedan aplicar dichos cambios en un commit anterior
     
     git reset HEAD # Sirve para sacar archivos del staging area para que esos cambios no se envíen al último commit. Se puede deshacer agregando de nuevo los archivos con git add
     ```
 
--  ## Introducción a las ramas o branches de Git
+- ## Introducción a las ramas o branches de Git
 
   ```bash
   git commit -am "msj commit" # Perimite hacer el add y el commit en un sólo comando. Sólo funciona al modificar archivos que estaban en el staging area.
   ```
 
-  - **Crear rama:** la nueva rama se crea a partir del HEAD de la rama actual. Con **git show** se ´puede ver hacia que rama esta apuntando el HEAD.
+  - **Crear rama:** la nueva rama se crea a partir del HEAD de la rama actual. Con ``git show`` se puede ver hacia que rama esta apuntando el HEAD.
 
     ```bash
     git branch nombreRama # Crea una rama.
     git checkout nombreRama # Moverse a una rama
-    ```
-
+    git checkout -b # Crearuna rama y moverse a ella a la vez
+  ```
+    
     Es importante que antes de pasar de una rama a otra se haga un commit para **evitar perder los cambios** que se hayan hecho.
 
 - ## Fusión de ramas con Git merge
@@ -190,7 +191,7 @@ git checkout
 
   - **Deltas:** son los cambios que se hacen a un archivo y se mandan al servidor. Al servidor no se le manda todo el archivo como tal si no los cambios que se hicieron sobre dicho archivo.
 
-  - **Objects:** el repositorio comprimid para ser enviado a internet.
+  - **Objects:** el repositorio comprimido para ser enviado a internet.
 
   - **origin/master:** el master del repositorio en GitHub
 
@@ -215,7 +216,7 @@ Se quiere transmitir un mensaje secreto a través de internet sin que se su cont
 
 -  Crear una llave pública y una privada. Estas llaves están vinculadas matemáticamente.
 - Le mando una copia de la llave pública a la persona que me quiere mandar el mensaje.
-- Usa persona usa la llave pública para encriptar el mensaje que me quiere mandar.
+- Esa persona usa la llave pública para encriptar el mensaje que me quiere mandar.
 - La persona manda ese mensaje.
 - Recibo el mensaje y uso mi llave privada para desencriptar el mensaje.
 
@@ -281,8 +282,8 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
   ```bash
   git log --all # Mostra TODOS los commits hechos en el proyecto
-  git log --all --graph # Mostar con gráfico con el historial y comportamiento de las ramas creadas en el proyecto.
-  git log --all --graph --decorate --oneline # Muestra el gráfico de una maenera más corta y concisa.
+  git log --all --graph # Mostar con un gráfico el historial y comportamiento de las ramas creadas en el proyecto.
+  git log --all --graph --decorate --oneline # Muestra el gráfico de una manera más corta y concisa.
   
   # Este log se muestra en orden cronologico ascendente (se lee de abajo hacia arriba)
   ```
@@ -351,7 +352,7 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
 - ## Configurar múltiples colaboradores en un repositorio de GitHub
 
-  Los repositorios **públicos** se pueden clonar sin ningún proble y sin autenticarse en git.
+  Los repositorios **públicos** se pueden clonar sin ningún problema y sin autenticarse en git.
 
   Añadir a un usuario como contribuidor de un repositorio:
 
@@ -411,7 +412,7 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
 - ## Ignorar archivos en el repositorio con .gitignore
 
-  - Crear un archivo llamado **.gitignore** es la raíz del proyecto
+  - Crear un archivo llamado **.gitignore** en la raíz del proyecto
 
   - Dentro de .gitignore se ponen los nombres de archivo o directorios que no se deben agregar a git
 
@@ -420,7 +421,7 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
     
     /content/themes # Ignorar la carpeta themes que esta dentro de content
     
-    /content/themes/casper #  No ignorar la carpeta casper dentro de content/themes
+    !/content/themes/casper #  No ignorar la carpeta casper dentro de content/themes
     ````
 
 - ## README.md es una buena práctica
@@ -437,7 +438,7 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
 - ## Git rebase: reorganizando el trabajo realizado
 
-  Consiste en toma runa rama completa y pegarla de regreso en la rama master. Es una **muy mala práctica** hacer esto enviarlo al repositorio remoto, si esto se hace debe ser sólo en local. Usa git rebase con precaución y procurando preguntar antes a los compañeros de equipo.
+  Consiste en tomar una rama completa y pegarla de regreso en la rama master. Es una **muy mala práctica** hacer esto y enviarlo al repositorio remoto, si esto se hace debe ser sólo en local. Usa git rebase con precaución y procurando preguntar antes a los compañeros de equipo.
 
   ### Cómo hacer un rebase
 
@@ -520,7 +521,7 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
 - ## Git cherry-pick: traer commits viejos al head de un branch
 
-  Permite traer avances especificos de una rama que aún no esta terminada a master. **Es una mala práctica** se esta reconstruyendo la historia del proyecto, usar con sabiduría y no usar si no se sabe lo que se esta haciendo.
+  Permite traer avances específicos de una rama que aún no esta terminada a master. **Es una mala práctica** pues se esta reconstruyendo la historia del proyecto, usar con sabiduría y no usar si no se sabe lo que se esta haciendo.
 
   ### Cómo usar cherry-pick
 
@@ -564,12 +565,12 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
   Hay dos tipos de *git reset*:
 
-  - **git reset --HARD**: resetea todo sin conservar nada del staging area. Por lo general es el que más se usa en casos de emergencia.
-  - **git reset --SOFT**: conserva los archivos que esten en el staging area
+  - **git reset --hard**: resetea todo sin conservar nada del staging area. Por lo general es el que más se usa en casos de emergencia.
+  - **git reset --soft**: conserva los archivos que esten en el staging area
 
   ````bash
-  git reset --HARD HEAD@{4} # Retorna el estado del proyecto al HEAD especificado
-  git reset --HARD hash # También puede recibir un hash por parámetro
+  git reset --hard HEAD@{4} # Retorna el estado del proyecto al HEAD especificado
+  git reset --soft hash # También puede recibir un hash por parámetro
   ````
 
   Hacer esto se considera como **una mala práctica** por lo que sólo debe usarse n casos de emergencia. Git reset no borra el registro que queda en git reflog
@@ -596,51 +597,53 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
 
 - ## Comandos y recursos colaborativos en Git y GitHub
 
-  No solo pueden crearse alias globales sino también alias dentro de Git. Los siguientes son comandos creados para estadísticas de trabajo colaborativo.
+  No solo pueden crearse alias globales sino también alias dentro de Git. 
 
+  ### Crear un alias interno de git
+  
   ````bash
+  git config --global alias.stats "shortlog -sn --all --no-merges" # stats → El alias del comando. "..." → Definen el comando para el que se va a crear un alias
+  ````
+  
+Los siguientes son comandos para estadísticas de trabajo colaborativo.
+  
+````bash
   git shortlog # Ver que commits ha hecho cada miembro del equipo
   git shortlog -sn # Ver cuantos commits ha hecho cada miembro del equipo
   git shortlog -sn --all # Lo mismo que el comando anterior, sólo que incluye también los commits borrados
-  git shortlog -sn --all --no-merge # Lo mismo que el anterior, pero excluye los merges
-  ````
-
-  ### Crear un alias interno de git
-
-  ````bash
-  git config --global alias.stats "shortlog -sn --all --no-merges" # stats → El alias del comando. "..." → Definen el comando para el que se va a crear un alias
+git shortlog -sn --all --no-merge # Lo mismo que el anterior, pero excluye los merges
   ````
 
   ### git blame
 
   También conocido como *"el comando de la culpa"* permite saber quien modifico que en determinado archivo
-
+  
   ````bash
   git blame backend.py
   git blame -c backend.py # Indenta un poco mejor la salida del comando
   
-  git blame --help # Abre en el navegador la documentación del comando. --help sirve para cualquier comando
+  git blame --help # Muestra la documentación del comando. --help sirve para cualquier comando
   
-  git blame js/main.js -L35,53 # -L35,53 → Muestra quién modifico que entre las líneas 35 y 53
+git blame js/main.js -L35,53 # -L35,53 → Muestra quién modifico que entre las líneas 35 y 53
   ````
 
   ### Ver ramas remotas del proyecto
-
+  
   ```bash
   git branch -r
   
-  git branch -a # Ver todas las ramas, en blanco las locales y en rojo las remotas 
+git branch -a # Ver todas las ramas, en blanco las locales y en rojo las remotas 
   ```
 
   ### Ver estadísticas útiles del proyecto en GitHub
 
   En el Proyecto en GitHub > Insights > Pulse se pueden ver:
-
+  
   - La cantidad de pull request a los que se ha hecho merge
   - La cantidad de pull request hechos
   - La cantidad de pull request cerrados
   - Los contribuidores del proyecto
-  - La cantidad de releases hechos
+- La cantidad de releases hechos
   - ETC
 
   Se puede configurar el periodo que evalua el pulso.
@@ -664,7 +667,7 @@ Durante el proceso de encriptado se usa un algoritmo que actualmente es tan fuer
   En el Proyecto en GitHub > Insights > Network se muestra la historia de quién ha manipulado el proyecto a lo largo del tiempo y las  respectivas ramas. Es como un Gitk pero online.
 
   En el Proyecto en GitHub > Insights > Forks se muestra que personas le han hecho fork al proyecto.
-
+  
   
 
 
